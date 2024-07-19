@@ -1,0 +1,730 @@
+
+  html{
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    font-family: "Hiragino Kaku Gothic ProN";
+    letter-spacing: 0.05em;
+    min-width: 375px;
+    background-color: burlywood;
+    
+  }
+  
+  a {
+    text-decoration: none;
+  }
+
+  a,a:hover,a:visited{
+    color: inherit;
+  }
+
+  .h2{
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .h3{
+    
+    font-size:16px;
+    text-align: center;
+    padding-bottom: 3px;
+    border-bottom: solid 1px #fff;
+    
+  }
+
+  .header{
+    background-color: rgba(0, 150, 0, 0.8);  
+    height:80px;
+    width:100%;
+    
+    position:fixed;
+    top:0;  
+    z-index:10;
+  }
+
+  .header-left{
+    float: left;
+    
+  }
+
+  .header h1{
+    
+    color: #fff;
+    font-size:26px;
+    
+    padding-left:20px;
+    vertical-align: middle;
+  
+  }
+
+  .header span{
+    color: #A6ACFF;
+  }
+
+  
+  .header-right{
+    float: right;
+    line-height: 48px;
+    margin-right: 20px;
+  }
+
+  
+
+  .header-right li{
+    
+    color: #fff;
+    font-size: 16px;
+    display: inline-block;
+    
+    font-weight: normal;
+    
+    list-style:none;
+    
+  }
+
+  .jikosyoukai-link{
+    margin-right: 40px;
+  }
+
+  .header-right a{
+    display: block;
+  } 
+
+
+  
+
+  
+
+  .sample-list li{
+    margin-right: 40px;
+  }
+  
+  .menu-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    height: 60px;
+    width: 60px;
+    justify-content: center;
+    align-items: center;
+    z-index: 90;
+    background-color: #3584bb;
+  }
+  .menu-btn span,
+  .menu-btn span:before,
+  .menu-btn span:after {
+      content: '';
+      display: block;
+      height: 3px;
+      width: 25px;
+      border-radius: 3px;
+      background-color: #ffffff;
+      position: absolute;
+  }
+  .menu-btn span:before {
+      bottom: 8px;
+  }
+  .menu-btn span:after {
+      top: 8px;
+  }
+  #menu-btn-check:checked ~ .menu-btn span {
+    background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+  }
+  #menu-btn-check:checked ~ .menu-btn span::before {
+    bottom: 0;
+    transform: rotate(45deg);
+  }
+  #menu-btn-check:checked ~ .menu-btn span::after {
+    top: 0;
+    transform: rotate(-45deg);
+  }
+  #menu-btn-check {
+    display: none;
+  }
+  .menu-content {
+    width: 25%;
+    height: 50%;
+    position: fixed;
+    top: 0;
+    right: -25%;
+    z-index: 80;
+    background-color: #3584bb;
+    transition: all 0.5s;/*アニメーション設定*/
+  }
+  .menu-content ul {
+      padding: 70px 10px 0;
+  }
+  .menu-content ul li {
+      border-bottom: solid 1px #ffffff;
+      list-style: none;
+  }
+  
+  .menu-content ul li a {
+      display: block;
+      width: 100%;
+      font-size: 15px;
+      box-sizing: border-box;
+      color:#ffffff;
+      text-decoration: none;
+      padding: 9px 15px 10px 0;
+      position: relative;
+  }
+  .menu-content ul li a::before {
+      content: "";
+      width: 7px;
+      height: 7px;
+      border-top: solid 2px #ffffff;
+      border-right: solid 2px #ffffff;
+      transform: rotate(45deg);
+      position: absolute;
+      right: 11px;
+      top: 16px;
+  }
+
+
+  #menu-btn-check:checked ~ .menu-content {
+    right: 0%;/*メニューを画面内へ*/
+  }
+
+  .clear{
+  clear:both;
+  }
+
+  .container{
+    width:1024px;
+    max-width: 90%;
+    margin: 0 auto;
+  }
+  .top-image{
+    background-image: url("./images/photo0000-0606.jpg");
+    background-size: cover;
+    background-position: center;
+    height: 40vh;
+    
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+
+  .jikosyoukai{
+    margin-top: 80px;
+    text-align: center;
+  
+  }
+
+  .jikosyoukai h2{
+    color: #4b52a7;
+    
+    margin-bottom: 40px;
+    
+  }
+  .jikosyoukai h2 span{
+    display: block;
+    font-size: 14px;
+    margin-top: 6px;
+    text-align: center;
+  }
+
+  
+
+  .self_introduce{
+    font-size: 16px;
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto 30px auto;
+    font-weight: normal;
+    text-align: left;
+    color: #000000;
+    opacity: 1;
+
+  }
+
+  .self_introduce span{
+    font-weight: bold;
+  }
+  .jikosyoukai img{
+    text-align: center;
+    margin-bottom: 40px;
+    width:100%;
+  }
+
+  .list{
+    
+    display:flex;
+    padding-top: 20px;
+    padding-bottom:20px;
+    
+  }
+
+  .favorits{
+    width: 100%;
+    background-color: #8ab3dc;
+    display:flex;
+    justify-content: space-between;
+    padding-bottom:20px;
+    
+    border-bottom: solid 1px #fff;
+    flex-direction: column;
+    border-radius: 10px;
+    margin: 0 5px;
+  }
+  .favorits span{
+    margin-top: 3px;
+  }
+  .list h3{
+    color: #FFF;
+    margin-top: 20px;
+    
+    padding-bottom:10px;
+    
+    border-bottom: solid 1px #fff;
+    
+    text-align: center;
+    
+  }
+  .list span{
+    display: block;
+    font-size: 12px;
+  }
+
+  .list ul{
+    margin: 20px 0 10px 30px;
+    padding-left:30px;
+  }
+
+
+  .list li{
+    display: flexbox;
+    box-sizing: border-box;
+    font-size:16px;
+    height: 30px;
+    width:48%;
+    
+    
+  }
+
+  .favorit {
+    
+    color: #FEFFC7;
+    
+    flex-direction: column;
+    margin-right: 10px;
+  }
+
+  .weblink {
+    
+    color:#FFE8F6;
+    background-color: #8ab3dc;
+    
+    flex-direction: column;
+    
+    
+  }
+
+  .jissousample{
+    margin-top: 80px;
+  }
+
+  .jissousample h2{
+    color:#4b52a7;
+    font-size:24px;
+    
+    text-align: center;
+  }
+
+  .jissousample span{
+    font-size: 14px;
+    display: block;
+    margin-top: 6px;
+  }
+
+  .gallary{
+    margin-top: 80px;
+    width:100%;
+  
+
+  }
+
+  .gallary h3{
+    color: #32839c;
+    
+    font-size: 16px;
+    margin-bottom: 40px;
+    text-align: center;
+    border-bottom:solid 4px #000000 ;
+  }
+
+  .gallarysets{
+    display: flex;
+    width:100%;
+    margin: 0 auto;
+  }
+
+  .gallaryset{
+    width: 25%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0;
+    
+  }
+
+  .gallaryset img{
+    width:90%;
+    margin: 0 auto;
+  }
+
+  .gallaryset h4{
+    width:90%;
+    background-color: #758baf;
+    color:#FFFFFF;
+    font-size:14px;
+    text-align: center;
+    margin: 0 auto;
+  }
+
+  .gallaryset p{
+    width:90%;
+    font-size: 12px;
+    
+    text-align: left;
+    margin: 4px auto 0 auto;
+  }
+  .programs{
+    background-color: lightblue;
+    
+    text-align: center;
+
+  }
+  .form{
+    
+    margin: 80px auto 0 auto;
+    text-align: center;
+    
+  }
+
+  .form h3{
+    color: #32839c;
+    border-bottom:solid 1px #b7b7b7;
+    font-size: 16px;
+    margin-bottom: 40px;
+    
+  }
+  .forms{
+    width: 600px;
+    max-width: 100%;
+    
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  .liner{
+    
+    text-align: left;
+  }
+
+  .hissu{
+    
+    width:40px;
+    font-size:12px;
+    text-align: center;
+    background-color: #32839c;
+    color: #FFFFFF;
+    border-radius: 4px;
+    padding:0 8px;
+    margin-right: 10px;
+    display: inline-block;
+  }
+
+  .koumoku{
+    display: inline-block;
+  }
+
+  .forms input{
+    
+    border-radius: 10px;
+    border:solid 1px #000000;
+  }
+
+  .question{
+    margin-top:10px;
+    height: 40px;
+    margin-bottom: 20px;
+    
+
+  }
+
+  .btn{
+    height: 40px;
+    width: 300px;
+    text-align: center;
+    background-color: #8ab3dc;
+    color: #fff;
+    box-shadow: 0px 4px  #818694;
+    border-radius: 4px;
+    border:none;
+  }
+
+  .submit{
+    margin-top: 40px;
+    
+    margin-bottom: 80px;
+    
+  }
+
+  .javascript{
+    
+    text-align: center;
+    
+      }
+
+  .javascript h3{
+    color:#32839c;
+    border-bottom: solid 4px #b7b7b7;
+    font-size: 16px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+  }
+
+  .runway{
+    
+    
+    
+    line-height: 40px;
+    
+    margin:  40px auto 80px auto;
+  }
+
+  .Samples{
+    display: flex;
+    width:100%;
+    
+  }
+
+  .program h5{
+    font-size: 18px;
+  }
+
+  .programs{
+    font-size: 20px;
+    margin: 10px 0 0 0;
+  }
+
+  iframe{
+    width:100%;
+    background-color: white;
+  }
+  
+  .stopwatch{
+    height: 500px;
+  }
+
+  .piano{
+    height: 210px;
+  }
+
+  .roulette{
+    height: 450px;
+  }
+
+  .explains{
+    border-bottom:2px solid #4b52a7  ;
+  }
+
+  .footer{
+    background-color:rgba(0, 150, 0, 0.8);
+    height:120px;
+    width: 100%;
+  }
+
+  .copyright{
+    padding-top: 20px;
+    font-size: 24px;
+    color:white;
+    text-align: center;
+  }
+  
+  @media all and (max-width: 768px){
+
+    .header{
+      box-sizing: border-box;
+    }
+
+    .top-image{
+      background-image: url("./images/photo0000-0610.jpg");
+      height: 100vh;
+      width: 100%;
+      background-position: center;
+    }
+    .container{
+      width:90%
+    }
+  
+    .header  h1,.container h1, .footer h1{
+      font-size: 20px;
+    }
+
+    .header h1{
+      line-height: 46px;
+    }
+
+
+    .menu-btn {
+      position: fixed;
+      top: 5px;
+      right: 5px;
+      display: flex;
+      height: 40px;
+      width: 40px;
+      justify-content: center;
+      align-items: center;
+      z-index: 90;
+      background-color: #3584bb;
+    }
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+        content: '';
+        display: block;
+        height: 3px;
+        width: 25px;
+        border-radius: 3px;
+        background-color: #ffffff;
+        position: absolute;
+    }
+    .menu-btn span:before {
+        bottom: 8px;
+    }
+    .menu-btn span:after {
+        top: 8px;
+    }
+    #menu-btn-check:checked ~ .menu-btn span {
+      background-color: rgba(255, 255, 255, 0);
+    }
+    #menu-btn-check:checked ~ .menu-btn span::before {
+      bottom: 0;
+      transform: rotate(45deg);
+    }
+    #menu-btn-check:checked ~ .menu-btn span::after {
+      top: 0;
+      transform: rotate(-45deg);
+    }
+    
+    .menu-content{
+      width:50%;
+      right: -50%;
+      
+    }
+
+
+    #menu-btn-check:checked ~ .menu-content {
+      right: 0%;
+    }
+
+    .menu-content ul {
+      padding: 30px 5px 0;
+      height: 50%;
+    }
+
+    .menu-content ul li {
+      height:40px;
+      width:100%;
+      border-bottom: solid 1px #ffffff;
+      list-style: none;
+    }
+
+    
+    .jikosyoukai{
+      width:100%;
+    }
+
+
+    .jikosyoukai p{
+      font-size:  14px;
+    }
+
+    .self_introduce{
+      width: 100%;
+      word-wrap: break-word;
+    }
+
+    .jikosyoukai img{
+      width:100%;
+    }
+
+    .header{
+      height: 48px;
+    }
+
+    .header h1{
+      line-height: 24px;
+    }
+
+    .header li{
+      display: none;
+  
+    }
+
+    .container{
+      width:90%;
+      
+    }
+    .container h2{
+      font-size:20px;
+    }
+
+    .list{
+      width:100%;
+      display: flex;
+      flex-direction: column;
+      
+    }
+
+    .list ul{
+      margin: 10px;
+    }
+
+    .favorits{
+      width:100%;
+      
+      margin-bottom: 10px;
+      margin-left:0px;
+    }
+    
+
+    .gallarysets{
+      
+      
+      flex-direction: column;
+      
+    }
+
+    .gallaryset{
+      
+      width:100%;
+      
+    }
+
+    .gallaryset img, .gallaryset h4,.gallaryset p{
+      width:80%;
+
+    }
+
+    .form{
+      width:100%;
+    }
+    
+    .explains{
+      font-size: 14px;
+    }
+    
+    .attention{
+      font-size: 14px;
+    }
+
+  }
+  

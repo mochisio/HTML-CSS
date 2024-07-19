@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <title>Roulette</title>
+</head>
+<body>
+  <div class="container">
+    <div class="roulet">
+      <h1>Roulette</h1>
+      <canvas id="canvas"></canvas>
+      <br>
+      <button class="rouletteSwitch startSwitch" id="run">スタート</button>
+      <button class="rouletteSwitch stopSwitch"  id="stop">ストップ</button>
+      <div id="debug"></div>
+      <audio id="rollSound" src="sound/ルーレット.mp3"></audio>
+      <audio id="stopSound" src=""></audio>
+    </div>
+    <div id="players">
+      <div id =scoreAndPlayerstock>
+      <h1 class="players-title">SCORE</h1>
+      <div class="playerStockSelect">
+        プレイ人数：<input type="number" class="playerStock" id="playerStock" value="1" onkeydown="return event.keyCode !== 69" min="1" max="10">人
+        
+      </div>
+      <div class="turn">
+        ターン数：<div id="turnSet">1</div> 誰のターン:<div id="whoseTurn">1</div>P
+        <input type="button" value="ターンエンド" class="turnend" id="turnEnd">
+      </div>
+      
+      
+      </div>
+      <!- 右の空欄にイベントのポイントを入れる　22桁以上入れて精算ボタンを押すと指数表記になるので注意 ->
+      <div class="player" id="player1">
+        <div id="player-number">1P:</div><div id="point1">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point1"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button1" value="精算">
+      </div>
+      <div class="player" id="player2">
+        <div id="player-number">2P:</div><div id="point2">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point2"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button2" value="精算">
+      </div>
+      <div class="player" id="player3">
+        <div id="player-number">3P:</div><div id="point3">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point3"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button3" value="精算">
+      </div>
+      <div class="player" id="player4">
+        <div id="player-number">4P:</div><div id="point4">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point4"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button4" value="精算">
+      </div>
+      <div class="player" id="player5">
+        <div id="player-number">5P:</div><div id="point5">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point5"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button5" value="精算">
+      </div>
+      <div class="player" id="player6">
+        <div id="player-number">6P:</div><div id="point6">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point6"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button6" value="精算">
+      </div>
+      <div class="player" id="player7">
+        <div id="player-number">7P:</div><div id="point7">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point7"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button7" value="精算">
+      </div>
+      <div class="player" id="player8">
+        <div id="player-number">8P:</div><div id="point8">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point8"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button8" value="精算">
+      </div>
+      <div class="player" id="player9">
+        <div id="player-number">9P:</div><div id="point9">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point9"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button9" value="精算">
+      </div>
+      <div class="player" id="player10">
+        <div id="player-number">10P:</div><div id="point10">500</div><div id="dc">DC ポイント計算:</div><input type="number" class="event-point" id="event-point10"  onkeydown="return event.keyCode !== 69" value="0" step="50">DC<input type="button" class="seisann_button" id="seisann_button10" value="精算">
+      </div>
+    </div>
+  </div>
+  <script src="./script.js"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+body {
+    background-color: #fafafa;
+}
+
+.container{
+  display:flex;
+}
+
+h1{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+canvas {
+    /*width:1000px;
+  height:1000px; */
+    background-color: #fff;
+}
+
+.rouletteSwitch{
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.startSwitch{
+  background-color: #ff9090;
+}
+
+.stopSwitch{
+  background-color: aqua;
+}
+
+.playerStockSelect{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+
+
+.playerStock{
+  width:30px;
+}
+
+.turn{
+  display: flex;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.turnend{
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.seisann_button{
+  font-size: 15px;
+  font-weight: bold;
+}
+
+
+.player{
+  
+  display:inline-block;
+  font-size:large;
+  white-space: nowrap;
+  display:flex;
+}
+
+.event-point{
+  
+  width:180px;
+}
+
+@media all and (max-width: 768px) {
+  html{
+    transform: scale(0.75);
+  }
+}

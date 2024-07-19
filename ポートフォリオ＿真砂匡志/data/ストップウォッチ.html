@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ストップウォッチ</title>
+</head>
+<body>
+    <div style="background-color: greenyellow;box-sizing: border-box; width: 100%; text-align: center; border-radius: 5%;height: 480px;padding:5%;">
+        <div style="background-color: black;color: white;width: 80%;margin: 0 auto 5% auto;height: 45%;position: relative;">
+        <P id="time" style="font-size: xx-large;height:100%; display: flex;
+        justify-content: center;
+        align-items: center;">00:00.00</P>
+        </div>
+        <div class="bottons" style="justify-content: space-between;width: 80%;margin: auto auto;">
+            <input type="button" style="background-color: black;color: white;width: 32%;height: 80px;" id="start" value="Start">
+            <input type="button" style="background-color: black;color: white;width: 32%;height: 80px;" id="stop" value="Stop">
+            <input type="button" style="background-color: black;color: white;width: 32%;height: 80px;" id="reset" value="Reset">
+        </div>
+    </div>
+    <script class="stopwatch"> 
+    //0抜き用
+    function zeroPadding(NUM, LEN){
+	    return ( Array(LEN).join('0') + NUM ).slice( -LEN );
+
+    }   
+    //時間の初期設定
+    let milisec = 0;
+    let sec =0;
+    let min = 0;
+    
+    
+    const time = document.getElementById("time");
+    let startbtn = document.getElementById("start");
+    let stopbtn = document.getElementById("stop");
+    let resetbtn= document.getElementById("reset");
+    
+    //各ボタンのステータスによって表示を変更する
+    function button_status(){
+        if(startbtn.disabled ==true){
+            startbtn.style.opacity=0.5;
+        }
+        else if(startbtn.disabled ==false){
+            startbtn.style.opacity=1;
+        }
+
+        if(stopbtn.disabled ==true){
+            stopbtn.style.opacity=0.5;
+        }
+        else if(stopbtn.disabled ==false){
+            stopbtn.style.opacity=1;
+        }
+
+        if(resetbtn.disabled ==true){
+            resetbtn.style.opacity=0.5;
+        }
+        else if(resetbtn.disabled ==false){
+            resetbtn.style.opacity=1;
+        }
+    }
+
+    startbtn.disabled = false;
+    stopbtn.disabled =true;
+    resetbtn.disabled =true;
+
+    button_status();
+
+    function count_start(){
+            
+        timer = setInterval("count_up()",10); 
+        startbtn.disabled = true;
+        stopbtn.disabled =false;
+        resetbtn.disabled =true;
+
+        button_status();
+        }
+        
+    function count_up(){
+        
+            
+        milisec++;
+        if(milisec == 100){
+            milisec=0;
+            sec++;
+        }
+        if(sec ==60){
+            sec=0;
+            min++;
+        }
+        let millisecond =zeroPadding(milisec,2);
+        let second =zeroPadding(sec,2);
+        let minute =zeroPadding(min,2);
+        //time部分の書き換え
+        time.textContent = `${minute}:${second}.${millisecond}`;
+        }
+    function count_stop(){
+        
+        clearInterval(timer);
+        startbtn.disabled =false;
+        stopbtn.disabled =true;
+        resetbtn.disabled =false;
+        button_status();
+    }
+
+    function count_reset(){
+        
+        milisec = 0;
+        sec = 0;
+        min = 0;
+        millisecond =zeroPadding(milisec,2);
+        second =zeroPadding(sec,2);
+        minute =zeroPadding(min,2);
+        time.textContent = `${minute}:${second}.${millisecond}`;
+        startbtn.disabled = false;
+        stopbtn.disabled =true;
+        resetbtn.disabled =true;
+        button_status();
+    }
+    startbtn.addEventListener("click", count_start);
+    stopbtn.addEventListener("click",count_stop);
+    resetbtn.addEventListener("click",count_reset);
+    
+    
+    
+    </script> 
+</body>
+
+    
+
+</html>

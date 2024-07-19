@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="ja">
+    <style>
+        .piano{
+            width:500px;
+            
+            text-align: center;
+        }
+    
+        .kyokumei{
+            width:500px;
+            background-color: green;
+            color: white;
+            font-weight: bold;
+        }
+    
+        .hyoujiarea{
+            width: 500px;
+            background-color: rgb(0, 21, 255);
+            color: white;
+            font-weight: bold;
+        }
+        
+        .piano-keys{
+            display: flex;
+            
+            
+        }
+        .piano-key{
+            text-align: center;
+            border: 1px black solid;
+            width: 70px;
+            cursor: pointer;
+        }
+        .autoPlaybutton{
+            margin: 0 auto;
+            background-color: blueviolet;
+            width: 200px;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+<head>
+    <meta charset="UTF-8">
+    <title>簡易ピアノ</title>
+
+</head>
+
+<body>
+    <div class="piano">
+        <div class="kyokumei">
+            <p id="kyokumei">　</p>
+        </div>
+        <div class="hyoujiarea">
+            <p id="scale">　</p>
+        </div>
+        
+        <div class="piano-keys">
+            
+            <div class="piano-key" id="0">ド</div>
+            <div class="piano-key" id="1">レ</div>
+            <div class="piano-key" id="2">ミ</div>
+            <div class="piano-key" id="3">ファ</div>
+            <div class="piano-key" id="4">ソ</div>
+            <div class="piano-key" id="5">ラ</div>
+            <div class="piano-key" id="6">シ</div>
+        </div>
+        <!- 手動演奏の時間を入れる部分。 初期状態は1秒。->
+        <div>
+            手動:<input type="number" class="manualTime" id="manualTime" onkeydown="return event.keyCode !== 69" value="1" min="0.25" max="3" step="0.01">秒（0.25～3秒）
+        </div>
+        <br>
+        <input type="button" class="autoPlaybutton" id="playbutton" value="自動演奏">
+    </div>
+
+    <script> 
+        //音源用意
+        const sounds = [
+                {note: "ド", file: "sound/maou_se_inst_piano2_1do.mp3"},
+                {note: "レ", file: "sound/maou_se_inst_piano2_2re.mp3"},
+                {note: "ミ", file: "sound/maou_se_inst_piano2_3mi.mp3"},
+                {note: "ファ", file: "sound/maou_se_inst_piano2_4fa.mp3"},
+                {note: "ソ", file: "sound/maou_se_inst_piano2_5so.mp3"},
+                {note: "ラ", file: "sound/maou_se_inst_piano2_6ra.mp3"},
+                {note: "シ", file: "sound/maou_se_inst_piano2_7si.mp3"},
+                {note: "　",file:"sound/muon.mp3"}
+            ];
+        
+        //音声制御用
+        let audioTimer= null;
+        //音階表示制御用
+        let resetTimer= null;
+
+        let audio = new Audio();
+        //表示を消す
+        function reset(){            
+            scale.textContent ="　";
+        } 
+
+        //音を止める
+        function audioStop(){
+            audio.pause();
+            audio.currentTime = 0;
+            audioTimer =null;
+            resetTimer =null;
+        }
+        
+        
+        
+        
+
+        //音を鳴らす　index=7で休符
+        function playSound(index,time) {
+            if(audioTimer!=null&&resetTimer!=null){
+                clearTimeout(audioTimer);
+                clearTimeout(resetTimer);
+            }
+                        
+            const sound = sounds[index];
+            audio.pause();
+            audio.currentTime = 0;
+            audio = new Audio(sound.file);
+            document.getElementById('scale').textContent = sound.note;
+            audio.play();
+            audioTimer= setTimeout(audioStop,time);
+            resetTimer= setTimeout(reset,1000);
+        }
+
+        
+
+
+        // 自動演奏が動作しているかどうかを表すフラグ
+        let isAutoPlaying = false;
+        //手動演奏時間調節用
+        let manualTime;
+        //手動操作
+        for (let i = 0; i <= 6; i++) {
+                document.getElementById(i.toString()).addEventListener('click', function() {
+                    if (isAutoPlaying!=true) {
+                        manualTime= document.getElementById('manualTime').value;
+                        //元のピアノ音源が3秒の為、0.25～3秒の範囲に収まっていないと警告が出るようにした
+                        if(manualTime>=0.25 &&manualTime<=3){
+                            playSound(i,manualTime*1000);
+                        }
+                        else{
+                            alert('手動操作の秒数指定は0.25~3秒の間でお願いします。')
+                        }
+                        
+                    }
+                });
+                
+            }
+
+        
+        document.getElementById("playbutton").addEventListener('click',autoPlay);
+        //自動演奏の曲データを入れる変数
+        let songs =  {
+                "きらきら星": [
+                    {note:0, playLength:500},{note:7, playLength:500},{note:0, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:5, playLength:500},{note:7, playLength:500},{note:5, playLength:500},{note:7, playLength:500},{note:4, playLength:2000},{note:3, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:1, playLength:500},{note:7, playLength:500},{note:1, playLength:500},{note:7, playLength:500},{note:0, playLength:2000},{note:4, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:1, playLength:2000},{note:4, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:1, playLength:2000},{note:0, playLength:500},{note:7, playLength:500},{note:0, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:4, playLength:500},{note:7, playLength:500},{note:5, playLength:500},{note:7, playLength:500},{note:5, playLength:500},{note:7, playLength:500},{note:4, playLength:2000},{note:3, playLength:500},{note:7, playLength:500},{note:3, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:2, playLength:500},{note:7, playLength:500},{note:1, playLength:500},{note:7, playLength:500},{note:1, playLength:500},{note:7, playLength:500},{note:0, playLength:2000}]
+                ,
+                "チューリップの歌": [
+                    {note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:1000},{note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:1000},{note:4,playLength:500},{note:2,playLength:500},{note:1,playLength:500},{note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:500},{note:1,playLength:1000},{note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:1000},{note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:1000},{note:4,playLength:500},{note:2,playLength:500},{note:1,playLength:500},{note:0,playLength:500},{note:1,playLength:500},{note:2,playLength:500},{note:0,playLength:1000},{note:4,playLength:250},{note:7,playLength:250},{note:4,playLength:250},{note:7,playLength:250},{note:2,playLength:250},{note:7,playLength:250},{note:4,playLength:250},{note:7,playLength:250},{note:5,playLength:250},{note:7,playLength:250},{note:5,playLength:250},{note:7,playLength:250},{note:4,playLength:1000},{note:2,playLength:250},{note:7,playLength:250},{note:2,playLength:250},{note:7,playLength:250},{note:1,playLength:250},{note:7,playLength:250},{note:1,playLength:250},{note:7,playLength:250},{note:0,playLength:4000}]
+                
+                };
+        //曲の題名
+        let songsTitle ="";
+        //自動演奏
+        async function autoPlay(){
+            var score;
+            isAutoPlaying =true;
+            
+            document.getElementById( "playbutton" ).value = "演奏中止";
+            //自動演奏ボタンからautoPlayイベントを削除して、autoPlay_stopイベントを追加する
+            
+            document.getElementById("playbutton").removeEventListener('click',autoPlay);
+            document.getElementById("playbutton").addEventListener('click',autoPlay_stop);
+            
+            
+            //曲の選択用ランダム関数    
+            let select= Math.floor(Math.random()*2);
+            
+            switch(select){
+                case 0:
+                    //きらきら星
+                    songsTitle ="きらきら星";
+                    await autoScore(songs['きらきら星']);
+                    await autoPlay_stop();
+                    break;
+                case 1:
+                    //チューリップ
+                    songsTitle="チューリップの歌";
+                    await autoScore(songs['チューリップの歌']);
+                    await autoPlay_stop();
+                    break;
+            }
+        }
+            
+        //自動演奏制御用
+        let cumulativeDelay =0;
+        //タイマーID保存用配列
+        let timeouts =[];
+        //自動演奏用音鳴らす関数
+        async function autoScore(score){
+            kyokumei.textContent=`自動演奏中です：${songsTitle}`;
+            cumulativeDelay =0;
+            let i=0;
+            for (let x of score){
+                let note=x.note;
+                let playLength=x.playLength;
+                let timer= setTimeout(() => playSound(note,playLength), cumulativeDelay);
+                timeouts.push(timer);//タイマーID保存
+                cumulativeDelay += playLength;
+            }
+            return new Promise((resolve) => {
+                let finalTimer = setTimeout(() => {
+                    resolve();
+                }, cumulativeDelay);
+                timeouts.push(finalTimer); // タイマーID保存
+            });
+        }   
+            
+        
+
+        //自動演奏を止める関数
+        async function autoPlay_stop(){          
+            isAutoPlaying =false;
+            document.getElementById( "playbutton" ).value ="自動演奏";
+            reset();
+            kyokumei.textContent="　";
+            // 保存した全てのタイマーを停止
+            for (let timer of timeouts) {
+                clearTimeout(timer);
+            }
+            timeouts = [];
+            //イベント追加および削除
+            document.getElementById("playbutton").removeEventListener('click',autoPlay_stop);
+            document.getElementById("playbutton").addEventListener('click',autoPlay);           
+        }  
+    </script> 
+</body>
+

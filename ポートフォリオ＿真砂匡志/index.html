@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Masashi Masago's Portfolio</title>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+    <div class="header">
+        <div class="header-left">
+            <h1 ><span>M</span>asago Masashi's Portfolio</h1>
+            <div class="clear"></div>
+        </div>
+        
+        
+        <div class="clear"></div>
+        
+        
+    </div>   
+    <div class="hamburger-menu">
+        <input type="checkbox" id="menu-btn-check">
+        <label for="menu-btn-check" class="menu-btn"><span></span></label>
+        <div class="menu-content">
+            <ul>
+                <li>
+                    <a href="#jikosyoukai">自己紹介</a>
+                </li>
+                <li>
+                    <a href="#jissousample">実装サンプル</a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <div  class="top-image"></div> 
+    <div class="container">
+    
+        <div class="jikosyoukai" id="jikosyoukai">
+            <div>
+                <h2>自己紹介<span>Self　introduction</span></h2>
+            </div>
+            <p class="self_introduce">私の名前は<span>真砂匡志</span>です。
+            大阪府貝塚市出身で現在はディーキャリアITエキスパート天王寺オフィスにて、プログラミング学習に取り組んでおります。<br> どうぞよろしくお願いいたします。
+            <br>なお、このポートフォリオはディーキャリアで作成した自己紹介サイトを改変して作っています。そして、写真はフリー素材を使っています。
+            </p>
+            <img src="./images/photo0000-3125.jpg" alt="貯水池">
+        
+        </div>
+    
+        <div class="list">
+            <div class="favorits">
+                <h3>使用言語<span>Language</span></h3>
+                <ul class="favorit">
+                    <li>HTML＆CSS</li>
+                    <li>JavaScript</li>
+                    
+                </ul>
+            </div>
+        
+            
+        
+        </div>
+        
+
+        
+        <div class="jissousample" id="jissousample">
+            <h2>実装サンプル<span>Sample</span></h2>
+        
+            
+            <div class="program" id="program">
+                <h3>作成したプログラム</h3>
+                    <div>この項目では、ディーキャリアITエキスパート天王寺オフィスの課題で作成したプログラムを紹介します。基本的にHTML＆CSSとJavaScriptでプログラムを組んでいます。</div>
+                    <h4 class="programs">ストップウォッチ</h4>
+                    <iframe src="./data/ストップウォッチ.html" title="ストップウォッチ" class="stopwatch"></iframe>
+                    <div class="explains">このストップウォッチでは、スタート、ストップ、リセットボタンが「初期状態」「計測中」「ストップ中」の状況に応じて機能がオンオフするようにしました。その時のボタン表示の変更の実装に1週間かかりました。 </div>
+                    <h4 class="programs">簡易ピアノ</h4>
+                    
+                    <iframe src="./data/piano/js_tennoji_masago.html" class="piano"></iframe>
+                    <h5>動作サンプル</h5>
+                    <div class="attention">　※下記の映像は課題としてITサポート（プログラム課題の審査をしていただいたところ）に提出した当時のものを使用しております。</div>
+                    <video controls src="./images/piano.mp4" class="Samples"></video>
+                    <div class="explains">この簡易ピアノでは、自動演奏ボタンで2種類の曲がランダムに演奏される機能と、手動音声での演奏する長さの調整ができる機能を実装しました。<br>このピアノの基礎である「指定された秒数だけ音を鳴らす機能」を実装するのに2週間ほどかけ、その後自動演奏の実装に3週間かかりました。</div>
+                    <h4 class="programs">ルーレット付きポイント管理システム</h4>
+                    <iframe src="./data/人生ゲームルーレット/roulette.html" class="roulette"></iframe>
+                    <h5>動作サンプル</h5>
+                    <video controls src="./images/Roulette.mp4" class="Samples"></video>
+                    <div class="explains">グループワークにおいて、人生ゲームを作ったのですが、その際にルーレットを製作しました。<br>
+                        ルーレットはJavaScriptのcanvasを利用して作りましたが、ルーレットの基礎理解に半月、ルーレットの中に文字を入れることをもう半月かけて実装しました。<br>
+                        ルーレットが回っている時にBGMを鳴らしたり、プレイ人数を入力してターンエンドボタンを押して誰のターンであるかを表示したり、ポイントの増減を入力して精算ボタンを押すとプレイヤーの現在のポイントに反映する機能を実装しました。これらの機能の実装に合計3週間かかりました。</div>
+            </div>
+            
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+
+        <div class="copyright">
+            Copyright © 2023 Masashi Masago
+        </div>
+    </div>
+</body>
+
+</html>
